@@ -1,0 +1,21 @@
+<launch>
+
+	<node pkg="joy" type="joy_node" name="joystick" respawn="false">
+			<param name="dev" type="string" value="/dev/input/js0" />
+			<param name="deadzone" value="0.12" />
+	</node>
+
+	<node pkg="command_generation" type="command_generation_node" respawn="true" name="com_node" output="screen">
+			
+			<param name="radius" type="double" value="30.0" />
+			
+			<param name="min_velocity" type="double" value="8.0" />
+			<param name="max_velocity" type="double" value="18.0" />
+			
+			<param name="output_topic" type="string" value="cmd_vel" />
+			
+	</node>
+
+	<node pkg="robot_car" type="run.py" name="robot_car_node" output="screen"/>
+
+</launch>

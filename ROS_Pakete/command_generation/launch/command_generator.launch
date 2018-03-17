@@ -1,0 +1,17 @@
+<launch>
+
+    <arg name="topic" default="/cmd_vel"/>
+
+	<node pkg="command_generation" type="command_generation_node" respawn="true" name="com_node" output="screen">
+		
+		<param name="radius" type="double" value="30.0" />
+		<param name="min_velocity" type="double" value="9.0" />
+		<param name="max_velocity" type="double" value="17.0" />
+		
+		<param name="output_topic" type="string" value="$(arg topic)"/>
+		
+	</node>
+	
+	<node pkg="turtlesim" type="turtlesim_node" respawn="false" name="turtle_bot"/>
+
+</launch>
